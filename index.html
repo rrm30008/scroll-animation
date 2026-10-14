@@ -89,20 +89,19 @@
         const canvas = document.getElementById("hero-canvas");
         const context = canvas.getContext("2d");
 
-        // CONFIGURATION: Adjust total frames and image naming structure here
-        const frameCount = 60; // Change this to match the total number of images you uploaded
+        // CONFIGURATION: Adjust total frames to match the number of images you are uploading
+        const frameCount = 60; // Change this if you have more or fewer frames
         
         // This automatically detects your GitHub Pages URL path or local folder
         const currentPath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
         const baseURL = window.location.origin + currentPath + '/'; 
         
-        // Helper to format frame numbers with leading zeros (e.g., frame_001.jpg)
+        // Formats frame numbers with leading zeros to match frame-001.jpg
         const currentFrame = index => (
-            `${baseURL}frame_${(index + 1).toString().padStart(3, '0')}.jpg`
+            `${baseURL}frame-${(index + 1).toString().padStart(3, '0')}.jpg`
         );
 
         const images = [];
-        const frames = { frame: 0 };
         let imagesLoaded = 0;
 
         // Preload all images into memory for lag-free scrubbing
@@ -126,7 +125,7 @@
             context.drawImage(images[0], 0, 0);
         }
 
-        // Map scroll position to frame index using GSAP-style linear interpolation math
+        // Map scroll position to frame index
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const maxScrollTop = document.body.scrollHeight - window.innerHeight;
@@ -150,8 +149,7 @@
             }
         }
 
-        // Simple trigger logic for text overlays based on scroll depth percentage
-        function-caption-handler = {} // placeholder
+        // Trigger logic for text overlays based on scroll depth percentage
         function updateCaptions(fraction) {
             const cap1 = document.getElementById('caption-1');
             const cap2 = document.getElementById('caption-2');
